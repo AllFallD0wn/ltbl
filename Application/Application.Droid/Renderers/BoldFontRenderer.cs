@@ -1,17 +1,15 @@
 using Android.Graphics;
-using Android.Widget;
 using LTBLApplication.Controls;
 using LTBLApplication.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(FontLabel), typeof(FontRenderer))]
+[assembly: ExportRenderer(typeof(BoldFontLabel), typeof(BoldFontRenderer))]
 namespace LTBLApplication.Droid.Renderers
 {
-
-    public class FontRenderer : LabelRenderer
+    public class BoldFontRenderer : LabelRenderer
     {
-        private const string FontName = "Roboto-Light.ttf";
+        private const string FontName = "Roboto-Bold.ttf";
 
         protected override void OnElementChanged(ElementChangedEventArgs<Label> _e)
         {
@@ -22,5 +20,3 @@ namespace LTBLApplication.Droid.Renderers
         }
     }
 }
-
-

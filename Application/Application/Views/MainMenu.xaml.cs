@@ -31,7 +31,7 @@ namespace LTBLApplication.Views
                 "Export View",
                 "About"
             };
-            Menu.ItemSelected += Menu_ItemSelected;
+            Menu.ItemTapped += Menu_ItemSelected;
         }
 
         /// <summary>
@@ -39,16 +39,17 @@ namespace LTBLApplication.Views
         /// </summary>
         /// <param name="_sender">List View</param>
         /// <param name="_e"></param>
-        private void Menu_ItemSelected(object _sender, SelectedItemChangedEventArgs _e)
+        private async void Menu_ItemSelected(object _sender, ItemTappedEventArgs _e)
         {
-            ListView view = (ListView) _sender;
+            var view = (ListView) _sender;
             var selected = (String)view.SelectedItem;
-            DisplayAlert("Selected", selected, "OK");
+
             switch (selected)
             {
                 case "New Device":
                 {
                     //navigate to new device page
+                    await Navigation.PushAsync(new AddDeviceView(), true);
                     break;
                 }
                 case "Import View":
@@ -66,7 +67,7 @@ namespace LTBLApplication.Views
                     //navigate to about page
                     break;
                 }
-            }
+            }     
         }
     }
 }

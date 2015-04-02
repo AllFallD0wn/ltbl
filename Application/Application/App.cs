@@ -12,7 +12,16 @@ namespace LTBLApplication
         public App()
         {
             // The root page of your application
-            MainPage = new MainView();
+            MainPage = GetMainPage();
+        }
+        
+        /// <summary>
+        /// Returns the main (first) page
+        /// </summary>
+        /// <returns></returns>
+        public static Page GetMainPage()
+        {
+            return new NavigationPage(new MainView());
         }
 
         protected override void OnStart()

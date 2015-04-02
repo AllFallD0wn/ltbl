@@ -10,4 +10,9 @@ namespace LTBLApplication.Controls
     public class FontLabel : Label
     {
     }
+
+    public class BoldFontLabel : Label
+    {
+        
+    }
 }
