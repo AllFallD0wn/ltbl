@@ -2,7 +2,7 @@
 
 namespace LTBLApplication.Views
 {
-    public partial class AddDeviceView
+    public partial class AddDeviceView : ContentPage
     {
         public AddDeviceView()
         {

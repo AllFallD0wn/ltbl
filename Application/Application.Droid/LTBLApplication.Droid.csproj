@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\BoldFontRenderer.cs" />
+    <Compile Include="Renderers\FontEntryRenderer.cs" />
     <Compile Include="Renderers\FontRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

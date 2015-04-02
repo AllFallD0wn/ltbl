@@ -18,6 +18,9 @@ namespace LTBLApplication.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            //Get rid of SelectedItem and hide the menu
+            Master = new MainMenu();
             IsPresented = false;
         }
     }

@@ -1,9 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:LTBLApplication.Controls;assembly=LTBLApplication"
+             xmlns:models="clr-namespace:LTBLApplication.Models;assembly=LTBLApplication"
              x:Class="LTBLApplication.Views.AddDeviceView"
-             Title="homeView"
+             Title="Add Device"
              BackgroundColor="White"
              >
-  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+  <Grid>
+    <Grid.BindingContext>
+      <models:DeviceModel />
+    </Grid.BindingContext>
+    
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+   
+    
+        <controls:FontLabel Grid.Row="0" Grid.Column="0" Text="Name" TextColor="Black" />
+        <controls:FontEntry Grid.Row="0" Grid.Column="1" Text="{Binding Name}" TextColor="Black"></controls:FontEntry>
+        <controls:FontLabel Grid.Row="1" Grid.Column="0" Text="Address" TextColor="Black"/>
+        <controls:FontEntry Grid.Row="1" Grid.Column="1" Text="{Binding Address}" TextColor="Black"/>
+        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding AddDeviceCommand}" BackgroundColor="Green"></Button>
+
+  </Grid>
+
 </ContentPage>

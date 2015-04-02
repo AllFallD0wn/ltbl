@@ -15,4 +15,9 @@ namespace LTBLApplication.Controls
     {
         
     }
+
+    public class FontEntry : Entry
+    {
+        
+    }
 }

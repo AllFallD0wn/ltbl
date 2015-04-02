@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Controls\FontLabel.cs" />
+    <Compile Include="Models\DeviceModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\AddDeviceView.xaml.cs">
       <DependentUpon>AddDeviceView.xaml</DependentUpon>

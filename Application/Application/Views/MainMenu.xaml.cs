@@ -22,7 +22,7 @@ namespace LTBLApplication.Views
         /// <summary>
         /// Sets up the menu view
         /// </summary>
-        private void SetupMenu()
+        public void SetupMenu()
         {
             Menu.ItemsSource = new List<string>
             {
