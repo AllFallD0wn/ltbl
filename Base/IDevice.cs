@@ -15,5 +15,9 @@ namespace Base
         int Port { get; set; }
         //Type of packet to send
         NetworkType Type { get; set; }
+        //Message to send
+        IMessage Message { get; set; }
+        //Used to send the message
+        void Invoke();
     }
 }
