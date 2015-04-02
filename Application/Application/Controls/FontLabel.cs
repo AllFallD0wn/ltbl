@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace LTBLApplication.Controls
 {
-    public class FontLabel : Entry
+    public class FontLabel : Label
     {
     }
 }

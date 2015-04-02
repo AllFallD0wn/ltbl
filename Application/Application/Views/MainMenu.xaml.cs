@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using LTBLApplication.Controls;
 using Xamarin.Forms;
 
 namespace LTBLApplication.Views
@@ -37,12 +37,14 @@ namespace LTBLApplication.Views
         /// <summary>
         /// Called when a menu item is selected by the user
         /// </summary>
-        /// <param name="_sender">Entry item</param>
+        /// <param name="_sender">List View</param>
         /// <param name="_e"></param>
         private void Menu_ItemSelected(object _sender, SelectedItemChangedEventArgs _e)
         {
-            var selected = (Entry) _sender;
-            switch (selected.Text)
+            ListView view = (ListView) _sender;
+            var selected = (String)view.SelectedItem;
+            DisplayAlert("Selected", selected, "OK");
+            switch (selected)
             {
                 case "New Device":
                 {
