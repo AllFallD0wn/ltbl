@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace LTBLApplication.Views
 {
-    public partial class MainView
+    public partial class HomeView : ContentPage
     {
-        public MainView()
+        public HomeView()
         {
             InitializeComponent();
         }

@@ -1,8 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:LTBLApplication.Views;assembly=LTBLApplication"
              x:Class="LTBLApplication.Views.MainView">
-  
-	<Label Text="YOLO" VerticalOptions="Center" HorizontalOptions="Center" />
-  
-</ContentPage>
+
+  <MasterDetailPage.Master>
+    <views:MainMenu />
+  </MasterDetailPage.Master>
+
+  <MasterDetailPage.Detail>
+    <views:HomeView />
+  </MasterDetailPage.Detail>
+
+</MasterDetailPage>

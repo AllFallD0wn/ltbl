@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 
-namespace LTBLApplication.Views
+namespace LTBLApplication.Controls
 {
-    public partial class MainView
+    public class FontLabel : Entry
     {
-        public MainView()
-        {
-            InitializeComponent();
-        }
     }
 }

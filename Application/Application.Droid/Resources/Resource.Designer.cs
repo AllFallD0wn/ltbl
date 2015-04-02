@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("Application.Droid.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("LTBLApplication.Droid.Resource", IsApplication=true)]
 
-namespace Application.Droid
+namespace LTBLApplication.Droid
 {
 	
 	
