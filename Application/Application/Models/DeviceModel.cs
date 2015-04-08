@@ -14,7 +14,10 @@ namespace LTBLApplication.Models
     {
         private string _name, _address, _message;
         private int _port;
-        private NetworkType _type;
+        private int _type;
+        private string _networkType;
+
+        private List<string> Types = new List<string> {"TCP", "UDP"}; 
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -63,6 +66,17 @@ namespace LTBLApplication.Models
             {
                 _port = value;
                 OnPropertyChanged("Port");
+            }
+        }
+
+        public int Type
+        {
+            get { return _type; }
+            set
+            {
+                _type = value;
+                _networkType = Types[_type];
+                OnPropertyChanged("Type");
             }
         }
 

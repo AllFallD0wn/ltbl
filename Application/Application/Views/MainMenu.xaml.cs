@@ -26,7 +26,9 @@ namespace LTBLApplication.Views
         {
             Menu.ItemsSource = new List<string>
             {
-                "New Device",
+                "New Button",
+                "New Slider",
+                "New Switch",
                 "Import View",
                 "Export View",
                 "About"
@@ -46,10 +48,18 @@ namespace LTBLApplication.Views
 
             switch (selected)
             {
-                case "New Device":
+                case "New Button":
                 {
                     //navigate to new device page
-                    await Navigation.PushAsync(new AddDeviceView(), true);
+                    await Navigation.PushAsync(new AddButtonView(), true);
+                    break;
+                }
+                case "New Slider":
+                {
+                    break;
+                }
+                case "New Switch":
+                {
                     break;
                 }
                 case "Import View":

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:LTBLApplication.Controls;assembly=LTBLApplication"
+             xmlns:models="clr-namespace:LTBLApplication.Models;assembly=LTBLApplication"
+             x:Class="LTBLApplication.Views.AddButtonView"
+             Title="Add Device">
+  <Grid Padding="10">
+    <Grid.BindingContext>
+      <models:DeviceModel />
+    </Grid.BindingContext>
+    
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    
+      <controls:FontLabel Grid.Row="0" Grid.Column="0" Text="Name"  YAlign="Center"/>
+      <controls:FontEntry Grid.Row="0" Grid.Column="1" Text="{Binding Name}"  VerticalOptions="Center"/>
+        
+      <controls:FontLabel Grid.Row="1" Grid.Column="0" Text="Address"  YAlign="Center"/>
+      <controls:FontEntry Grid.Row="1" Grid.Column="1" Text="{Binding Address}"  VerticalOptions="Center"/>
+    
+      <controls:FontLabel Grid.Row="2" Grid.Column="0" Text="Port" YAlign="Center" />
+      <controls:FontEntry Grid.Row="2" Grid.Column="1" Text="{Binding Port}" Keyboard="Numeric" VerticalOptions="Center"/>
+    
+      <controls:FontLabel Grid.Row="3" Grid.Column="0" Text="Message"  YAlign="Center" />
+      <controls:FontEntry Grid.Row="3" Grid.Column="1" Text="{Binding Message}"  VerticalOptions="Center"/>
+    
+      <controls:FontLabel Grid.Row="4" Grid.Column="0" Text="Message Type" YAlign="Center" />
+      <Picker Grid.Row="4" Grid.Column="1" SelectedIndex="{Binding Type}"  x:Name="TypePicker" VerticalOptions="Center"/>
+    
+      <Button Grid.Row="5" Grid.Column="0" Text="Cancel" BackgroundColor="Red"/>
+      <Button Grid.Row="5" Grid.Column="1" Text="Add" Command="{Binding AddDeviceCommand}" BackgroundColor="Green" TextColor="White"/>
+         
+        
+
+  </Grid>
+
+</ContentPage>
