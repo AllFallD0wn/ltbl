@@ -15,6 +15,7 @@ namespace LTBLApplication.Models
         private string _name, _address, _message;
         private int _port;
         private int _type;
+        private bool _ack;
         private string _networkType;
 
         private List<string> Types = new List<string> {"TCP", "UDP"}; 
@@ -80,6 +81,17 @@ namespace LTBLApplication.Models
             }
         }
 
+        public bool Ack
+        {
+            get { return _ack; }
+
+            set
+            {
+                _ack = value;
+                OnPropertyChanged("Ack");
+            }
+        }
+
         public ICommand AddDeviceCommand { protected set; get; }
 
         protected virtual void OnPropertyChanged(string _propertyName)
@@ -91,9 +103,12 @@ namespace LTBLApplication.Models
             }
         }
 
-        private void CreateDevice()
+        /// <summary>
+        /// Creates the button in the database
+        /// </summary>
+        protected virtual void CreateDevice()
         {
-            
+            Resources.AddDevice(new Base.Button(Name, Address, Message, Port, _networkType, _ack));
         }
     }
 }

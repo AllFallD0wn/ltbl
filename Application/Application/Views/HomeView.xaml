@@ -5,5 +5,5 @@
              Title="homeView"
              BackgroundColor="White"
              >
-	<Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+	<ListView x:Name="MainView" />
 </ContentPage>

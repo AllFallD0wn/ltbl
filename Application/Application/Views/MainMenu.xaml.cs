@@ -56,10 +56,14 @@ namespace LTBLApplication.Views
                 }
                 case "New Slider":
                 {
+                    //navigate to new slider page
+                    await Navigation.PushAsync(new AddSliderView(), true);
                     break;
                 }
                 case "New Switch":
                 {
+                    //navigate to new switch page
+                    await Navigation.PushAsync(new AddSwitchView(), true);
                     break;
                 }
                 case "Import View":

@@ -17,6 +17,7 @@
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="Auto"/>
+    <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
     
     <Grid.ColumnDefinitions>
@@ -39,8 +40,11 @@
       <controls:FontLabel Grid.Row="4" Grid.Column="0" Text="Message Type" YAlign="Center" />
       <Picker Grid.Row="4" Grid.Column="1" SelectedIndex="{Binding Type}"  x:Name="TypePicker" VerticalOptions="Center"/>
     
-      <Button Grid.Row="5" Grid.Column="0" Text="Cancel" BackgroundColor="Red"/>
-      <Button Grid.Row="5" Grid.Column="1" Text="Add" Command="{Binding AddDeviceCommand}" BackgroundColor="Green" TextColor="White"/>
+      <controls:FontLabel Grid.Row="5" Grid.Column="0" Text="Expect Ack?" YAlign="Center" />
+      <Switch Grid.Row="5" Grid.Column="1" IsToggled="{Binding Ack}"  x:Name="AckSwitch" VerticalOptions="Center"/>
+    
+      <Button Grid.Row="6" Grid.Column="0" Text="Cancel" BackgroundColor="Red"/>
+      <Button Grid.Row="6" Grid.Column="1" Text="Add" Command="{Binding AddDeviceCommand}" Clicked="Button_OnClicked" BackgroundColor="Green" TextColor="White"/>
          
         
 
