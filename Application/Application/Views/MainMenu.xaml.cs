@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using Base;
 using LTBLApplication.Controls;
+using Share.Forms.Plugin.Abstractions;
 using Xamarin.Forms;
 
 namespace LTBLApplication.Views
@@ -76,7 +77,7 @@ namespace LTBLApplication.Views
                 }
                 case "Export View":
                 {
-                    //navigate to export view
+                    
                     break;
                 }
                 case "About":

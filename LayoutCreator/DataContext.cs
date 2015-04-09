@@ -23,8 +23,6 @@ namespace LayoutCreator
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-
-
         public DeviceModel()
         {
             Id = Guid.NewGuid();

@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Share.Forms.Plugin.Droid;
 
 namespace LTBLApplication.Droid
 {
@@ -18,6 +19,7 @@ namespace LTBLApplication.Droid
 
             global::Xamarin.Forms.Forms.Init(this, _bundle);
             LoadApplication(new App());
+            ShareImplementation.Init();
         }
     }
 }
