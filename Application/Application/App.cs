@@ -9,8 +9,10 @@ namespace LTBLApplication
 {
     public class App : Application
     {
+        public DeviceManager Devices = new DeviceManager();
         public App()
         {
+            LTBLApplication.Resources.LoadDevices();
             // The root page of your application
             MainPage = GetMainPage();
         }
@@ -26,7 +28,7 @@ namespace LTBLApplication
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            
         }
 
         protected override void OnSleep()

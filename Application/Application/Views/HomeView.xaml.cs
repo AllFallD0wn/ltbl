@@ -14,7 +14,7 @@ namespace LTBLApplication.Views
         public HomeView()
         {
             InitializeComponent();
-            MainView.ItemsSource = LTBLApplication.Resources.Devices;
+            MainView.ItemsSource = ((App) Application.Current).Devices.Devices;
             DeviceAdded += DeviceAddedEvent;
             MainView.ItemSelected += MainViewOnItemSelected;
         }
@@ -32,8 +32,9 @@ namespace LTBLApplication.Views
 
         private void DeviceAddedEvent(object _sender, EventArgs _eventArgs)
         {
+            
             MainView.ItemsSource = null;
-            MainView.ItemsSource = LTBLApplication.Resources.Devices;
+            MainView.ItemsSource = ((App)Application.Current).Devices.Devices;
         }
     }
 }

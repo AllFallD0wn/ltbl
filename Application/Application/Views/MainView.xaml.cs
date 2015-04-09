@@ -10,9 +10,16 @@ namespace LTBLApplication.Views
 {
     public partial class MainView
     {
+        public static EventHandler Appeared;
         public MainView()
         {
             InitializeComponent();
+            Appeared += AppearedEvent;
+        }
+
+        private void AppearedEvent(object _sender, EventArgs _eventArgs)
+        {
+            IsPresented = false;
         }
 
         protected override void OnAppearing()

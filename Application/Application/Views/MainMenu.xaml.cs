@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using LTBLApplication.Controls;
 using Xamarin.Forms;
 
@@ -31,7 +32,8 @@ namespace LTBLApplication.Views
                 "New Switch",
                 "Import View",
                 "Export View",
-                "About"
+                "About",
+                "Delete Data"
             };
             Menu.ItemTapped += Menu_ItemSelected;
         }
@@ -81,7 +83,16 @@ namespace LTBLApplication.Views
                     //navigate to about page
                     break;
                 }
-            }     
+                case "Delete Data":
+                {
+                    ((App)Application.Current).Devices = new DeviceManager();
+                    LTBLApplication.Resources.SaveDevices();
+                    HomeView.DeviceAdded(this, new EventArgs());
+                    break;
+                }
+            }
+            view.SelectedItem = null;
+            MainView.Appeared(this, new EventArgs());
         }
     }
 }

@@ -35,9 +35,15 @@ namespace Base
             Port = _port;
             Type = (NetworkType)Enum.Parse(typeof(NetworkType), _type);
             Ack = _ack;
+            CreateMessage();
         }
 
         public string Invoke()
+        {
+            return Message.Invoke().Result;
+        }
+
+        private void CreateMessage()
         {
             switch (Type)
             {
@@ -49,7 +55,6 @@ namespace Base
                         Message = _messageText,
                         Ack = Ack
                     };
-                    return Message.Invoke().Result;
                     break;
                 case NetworkType.TCP:
                     Message = new TcpMessage()
@@ -59,10 +64,8 @@ namespace Base
                         Message = _messageText,
                         Ack = Ack
                     };
-                    return Message.Invoke().Result;
                     break;
             }
-            return null;
         }
     }
 }
