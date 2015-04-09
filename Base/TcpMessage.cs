@@ -26,23 +26,33 @@ namespace Base
 
         public async Task<string> Invoke()
         {
-            var client = new TcpSocketClient();
-            client.Connect(Address, Port);
-            var msg = Encoding.UTF8.GetBytes(Message);
-            client.WriteStream.Write(msg, 0, msg.Length);
-            client.WriteStream.Flush();
+            try
+            {
+                var client = new TcpSocketClient();
+                //var t = client.ConnectAsync(Address, Port);
+                
+                client.Connect(Address, Port);
+                var msg = Encoding.UTF8.GetBytes(Message);
+                client.WriteStream.Write(msg, 0, msg.Length);
+                client.WriteStream.Flush();
 
-            if (!Ack)
-            {
-                return null;
+                if (!Ack)
+                {
+                    return null;
+                }
+                using (var stream = client.ReadStream)
+                {
+                    stream.ReadTimeout = 1000;
+                    var bytes = new byte[1024];
+                    var i = stream.Read(bytes, 0, 1024);
+                    var s = Encoding.UTF8.GetString(bytes, 0, i);
+                    return s;
+                }
             }
-            using (var stream = client.ReadStream)
+            catch (Exception exception)
             {
-                var bytes = new byte[1024];
-                var i = stream.Read(bytes, 0, 1024);
-                var s = Encoding.UTF8.GetString(bytes, 0, i);
-                return s;
+                return exception.Message;
             }
-        }
+        } 
     }
 }

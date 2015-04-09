@@ -6,32 +6,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Base;
-using Xamarin.Forms;
+using LayoutCreator.Properties;
 
-namespace LTBLApplication.Models
+namespace LayoutCreator
 {
     public class DeviceModel : INotifyPropertyChanged
     {
         private Guid _id;
         private string _name, _address, _message;
         private int _port;
-        private int _type;
+        private string _type;
         private bool _ack;
         private string _networkType;
 
-        private List<string> Types = new List<string> {"TCP", "UDP"}; 
+        public List<string> Types = new List<string> { "TCP", "UDP" };
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        
+
 
         public DeviceModel()
         {
             Id = Guid.NewGuid();
-            AddDeviceCommand = new Command(_a =>
-            {
-                CreateDevice();
-            });
         }
 
         public Guid Id
@@ -84,13 +80,13 @@ namespace LTBLApplication.Models
             }
         }
 
-        public int Type
+        public string Type
         {
             get { return _type; }
             set
             {
                 _type = value;
-                _networkType = Types[_type];
+                _networkType = value;
                 OnPropertyChanged("Type");
             }
         }
@@ -120,9 +116,9 @@ namespace LTBLApplication.Models
         /// <summary>
         /// Creates the button in the database
         /// </summary>
-        protected virtual void CreateDevice()
+        public virtual IDevice CreateDevice()
         {
-            Resources.AddDevice(new Base.Button(Id, Name, Address, Message, Port, _networkType, _ack));
+            return new Base.Button(Id, Name, Address, Message, Port, _networkType, _ack);
         }
     }
 }

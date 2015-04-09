@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Reflection;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Base
 {
     public class Button : IDevice
     {
+        public Guid Id { get; set; }
+    
         private string _messageText;
 
         public string Name { get; set; }
@@ -16,7 +20,7 @@ namespace Base
         public NetworkType Type { get; set; }
 
         public IMessage Message { get; set; }
-
+    
         public bool Ack { get; set; }
 
         /// <summary>
@@ -27,8 +31,9 @@ namespace Base
             
         }
 
-        public Button(string _name, string _address, string _message, int _port, string _type, bool _ack)
+        public Button(Guid _id, string _name, string _address, string _message, int _port, string _type, bool _ack)
         {
+            Id = _id;
             Name = _name;
             Address = _address;
             _messageText = _message;

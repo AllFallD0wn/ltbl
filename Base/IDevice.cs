@@ -1,7 +1,11 @@
-﻿namespace Base
+﻿using System;
+using System.Windows.Input;
+
+namespace Base
 {
     public interface IDevice
     {
+        Guid Id { get; set; }
         //Name of the device
         string Name { get; set; }
         //IP Address of the device

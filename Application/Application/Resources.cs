@@ -39,18 +39,4 @@ namespace LTBLApplication
         }
     }
 
-    public class DeviceManager
-    {
-        public DeviceManager()
-        {
-            this.Devices = new List<IDevice>();
-        }
-
-        public void Add(IDevice _device)
-        {
-            Devices.Add(_device);
-        }
-        public List<IDevice> Devices { get; set; }
-    }
-
 }

@@ -11,7 +11,7 @@ namespace LTBLApplication.Droid
     {
         public void Save(string _filename, string _text)
         {
-            var path = Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            var path = Android.OS.Environment.ExternalStorageDirectory.Path;
             var filePath = Path.Combine(path, _filename);
             File.WriteAllText(filePath, _text);
         }
@@ -20,7 +20,7 @@ namespace LTBLApplication.Droid
         {
             try
             {
-                var path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                var path = Android.OS.Environment.ExternalStorageDirectory.Path;
                 var filePath = Path.Combine(path, _filename);
                 return File.ReadAllText(filePath);
             }
