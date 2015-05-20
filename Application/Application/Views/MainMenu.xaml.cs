@@ -31,11 +31,11 @@ namespace LTBLApplication.Views
             {
                 "New Button",
                 "New Slider",
-                "New Switch",
                 "Import View",
                 "Export View",
                 "About",
-                "Delete Data"
+                "Delete Data",
+                "Auto Configure"
             };
             Menu.ItemTapped += Menu_ItemSelected;
         }
@@ -76,8 +76,7 @@ namespace LTBLApplication.Views
                     break;
                 }
                 case "Export View":
-                {
-                    
+                {            
                     break;
                 }
                 case "About":
@@ -92,9 +91,75 @@ namespace LTBLApplication.Views
                     HomeView.DeviceAdded(this, new EventArgs());
                     break;
                 }
+                case "Auto Configure":
+                {
+                    Config();
+                    LTBLApplication.Resources.SaveDevices();
+                    HomeView.DeviceAdded(this, new EventArgs());
+                    break;
+                }
             }
             view.SelectedItem = null;
             MainView.Appeared(this, new EventArgs());
+        }
+
+        private void Config()
+        {
+            AbstractMessage message = new AbstractMessage
+            {
+                Ack = true,
+                Address = "192.168.10.26",
+                Port = 5050,
+                Message = "HYDRACC 0 x",
+                Type = NetworkType.TCP
+            };
+            var result = DependencyService.Get<IMessage>().Invoke(message);
+            string text = result.Result;
+            string[] lines = text.Split('\r');
+            var count = lines.Length - 2;
+            MakeButtons(count);
+        }
+
+        private void MakeButtons(int _count)
+        {
+            for (var i = 0; i < (_count * 2) + 2; i++)
+            {
+                var value = "";
+                var toAdd = ((App)Application.Current).Defaults.TryGetValue(i, out value);
+                var raiseLower = "";
+                if (i % 2 == 0)
+                    raiseLower = "Raise";
+                else
+                {
+                    raiseLower = "Lower";
+                }
+                var btn = new Base.Button()
+                {
+                    Address = "192.168.10.26",
+                    Ack = false,
+                    Id = Guid.NewGuid(),
+                    MessageText = "HYDRACC 0 " + value,
+                    Message = new AbstractMessage
+                    {
+                        Ack = false,
+                        Address = "192.168.10.26",
+                        Port = 5050,
+                        Message = "HYDRACC 0 " + value,
+                        Type = NetworkType.TCP
+                    }
+                };
+                btn.Name = raiseLower;
+                var temp = i;
+                if (i < 2)
+                    btn.Name += " All";
+                else
+                {
+                    if (raiseLower == "Lower")
+                        temp -= 1;
+                    btn.Name += " " + Math.Round((double)temp / 2, 0);
+                }
+                ((App)Application.Current).Devices.Add(btn);
+            }
         }
     }
 }

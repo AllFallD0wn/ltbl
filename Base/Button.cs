@@ -5,11 +5,10 @@ using Xamarin.Forms;
 
 namespace Base
 {
-    public class Button : IDevice
+    public class Device : IDevice
     {
         public Guid Id { get; set; }
-    
-        private string _messageText;
+
 
         public string Name { get; set; }
 
@@ -20,9 +19,32 @@ namespace Base
         public NetworkType Type { get; set; }
 
         public IMessage Message { get; set; }
-    
+
         public bool Ack { get; set; }
 
+        public Color Color { get; set; }
+
+        public string Invoke()
+        {
+            return Message.Invoke(Message).Result;
+        }
+
+        public void CreateMessage(string _text)
+        {
+            Message = new AbstractMessage
+            {
+                Address = Address,
+                Port = Port,
+                Message = _text,
+                Ack = Ack
+            };
+        }
+
+    }
+
+    public class Button : Device
+    {
+        public string MessageText;
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -30,47 +52,22 @@ namespace Base
         {
             
         }
+    }
 
-        public Button(Guid _id, string _name, string _address, string _message, int _port, string _type, bool _ack)
+    public class Slider : Device
+    {
+        public int MaxValue { get; set; }
+        public Slider()
         {
-            Id = _id;
-            Name = _name;
-            Address = _address;
-            _messageText = _message;
-            Port = _port;
-            Type = (NetworkType)Enum.Parse(typeof(NetworkType), _type);
-            Ack = _ack;
-            CreateMessage();
+            
         }
+    }
 
-        public string Invoke()
+    public class Switch : Device
+    {
+        public Switch()
         {
-            return Message.Invoke().Result;
-        }
-
-        private void CreateMessage()
-        {
-            switch (Type)
-            {
-                case NetworkType.UDP:
-                    Message = new UdpMessage
-                    {
-                        Address = Address,
-                        Port = Port,
-                        Message = _messageText,
-                        Ack = Ack
-                    };
-                    break;
-                case NetworkType.TCP:
-                    Message = new TcpMessage()
-                    {
-                        Address = Address,
-                        Port = Port,
-                        Message = _messageText,
-                        Ack = Ack
-                    };
-                    break;
-            }
+            
         }
     }
 }

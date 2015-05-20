@@ -40,6 +40,7 @@
     <Compile Include="Controls\BindablePicker.cs" />
     <Compile Include="Controls\FontLabel.cs" />
     <Compile Include="Controls\UniqueButton.cs" />
+    <Compile Include="Controls\UniqueSlider.cs" />
     <Compile Include="DeviceTemplateSelector.cs" />
     <Compile Include="ISaveLoad.cs" />
     <Compile Include="Models\DeviceModel.cs" />

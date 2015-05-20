@@ -13,7 +13,8 @@ namespace Base
         bool Ack { get; set; }
         //Variables added to message
         List<string> Variables { get; set; }
+        NetworkType Type { get; set; }
 
-        Task<string> Invoke();
+        Task<string> Invoke(IMessage _message);
     }
 }

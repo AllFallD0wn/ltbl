@@ -15,6 +15,7 @@ namespace LTBLApplication.Views
             InitializeComponent();
             TypePicker.Items.Add("TCP");
             TypePicker.Items.Add("UDP");
+           
         }
 
         private void Button_OnClicked(object _sender, EventArgs _e)

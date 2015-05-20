@@ -17,13 +17,12 @@ namespace LTBLApplication.Models
         private int _port;
         private int _type;
         private bool _ack;
+        private Color _color;
         private string _networkType;
 
-        private List<string> Types = new List<string> {"TCP", "UDP"}; 
+        private List<string> Types = new List<string> {"TCP", "UDP"};
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        
 
         public DeviceModel()
         {
@@ -94,7 +93,6 @@ namespace LTBLApplication.Models
                 OnPropertyChanged("Type");
             }
         }
-
         public bool Ack
         {
             get { return _ack; }
@@ -122,7 +120,17 @@ namespace LTBLApplication.Models
         /// </summary>
         protected virtual void CreateDevice()
         {
-            Resources.AddDevice(new Base.Button(Id, Name, Address, Message, Port, _networkType, _ack));
+            var button = new Base.Button
+            {
+                Id = Id,
+                Name = Name,
+                Address = Address,
+                Port = Port,
+                Type = (NetworkType)Type,
+                Ack = Ack
+            };
+            button.CreateMessage(Message);
+            Resources.AddDevice(button);
         }
     }
 }
